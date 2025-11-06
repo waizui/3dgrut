@@ -356,7 +356,6 @@ __device__ inline bool processHit(
     const float3 rayDirR = rayDirection * particleRotation;
     const float3 grdu    = giscl * rayDirR;
     const float3 grd     = safe_normalize(grdu);
-
     const float3 gcrod   = SurfelPrimitive ? gro + grd * -gro.z / grd.z : cross(grd, gro);
     const float grayDist = dot(gcrod, gcrod);
 
@@ -498,6 +497,8 @@ __device__ inline void processHitBwd(
     const float3 rayDirR = rayDirection * particleRotation;
     const float3 grdu    = giscl * rayDirR;
     const float3 grd     = safe_normalize(grdu);
+    // find the gaussian origin to the ray, if is surfel , just find hit point
+    // surfel gro.z is negative in local space so add negative sign
     const float3 gcrod   = SurfelPrimitive ? gro + grd * -gro.z / grd.z : cross(grd, gro);
     const float grayDist = dot(gcrod, gcrod);
 
@@ -566,7 +567,7 @@ __device__ inline void processHitBwd(
         radiance += rayRad;
         const float3 residualRayRad = maxf3((nextTransmit <= minTransmittance ? make_float3(0) : (integratedRadiance - radiance) / nextTransmit),
                                             make_float3(0));
-
+        // Dns is density
         // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         // ---> rayDns = 1 - prevTrm * (1-galpha) * nextTrm
         //             = 1 - (1-galpha) * prevTrm * nextTrm

@@ -14,6 +14,7 @@
 # limitations under the License.
 
 import logging
+from math import floor
 import os
 from enum import IntEnum
 import torch
@@ -30,6 +31,7 @@ logger = logging.getLogger(__name__)
 
 _3dgrt_plugin = None
 
+iteration_count = 0
 
 def load_3dgrt_plugin(conf):
     global _3dgrt_plugin
@@ -77,6 +79,14 @@ class Tracer:
                 sph_degree,
                 min_transmittance,
             )
+
+
+            global iteration_count
+            if iteration_count % 200==0:
+                hitcount =  hits_count.mean().item()
+                print(f"hitcount mean:{floor(hitcount)}  \n")
+            iteration_count+=1
+
             ctx.save_for_backward(
                 ray_to_world,
                 ray_ori,
