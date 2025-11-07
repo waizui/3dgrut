@@ -703,11 +703,6 @@ class Trainer3DGRUT:
         }
 
         for iter, batch in enumerate(self.train_dataloader):
-
-            if iter % 100 == 0:
-                mean_density = self.model.get_density().mean().item()
-                logger.info(f"Step {global_step} iter {iter} mean_density {mean_density:.6f}")
-
             # Check if we have reached the maximum number of iterations
             if self.global_step >= conf.n_iterations:
                 return
