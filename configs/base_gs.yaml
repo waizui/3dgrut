@@ -73,7 +73,7 @@ model:
     name: background-color # one of [skip-background, background-color]
     color: black # one of [black, white, random] needs to be defined if name == background-color
 
-  print_stats: true
+  print_stats: false
 
 checkpoint:
   iterations: ${int_list:[ 7000, 30000 ]}

@@ -1,6 +1,6 @@
 method: GSStrategy
 
-print_stats: true
+print_stats: false
 
 densify:
   params: positions # one of [positions, positions_gradient_norm, features_albedo]
