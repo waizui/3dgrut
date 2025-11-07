@@ -118,54 +118,63 @@ EXPERIMENTS: list[Experiment] = [
         name="bicycle",
         overrides={
             "dataset.downsample_factor": 4,
+            "print_stats":False,
         },
     ),
     Experiment(
         name="garden",
         overrides={
             "dataset.downsample_factor": 4,
+            "print_stats":False,
         },
     ),
     Experiment(
         name="stump",
         overrides={
             "dataset.downsample_factor": 4,
+            "print_stats":False,
         },
     ),
     Experiment(
         name="bonsai",
         overrides={
             "dataset.downsample_factor": 2,
+            "print_stats":False,
         },
     ),
     Experiment(
         name="counter",
         overrides={
             "dataset.downsample_factor": 2,
+            "print_stats":False,
         },
     ),
     Experiment(
         name="room",
         overrides={
             "dataset.downsample_factor": 2,
+            "print_stats":False,
         },
     ),
     Experiment(
         name="kitchen",
         overrides={
             "dataset.downsample_factor": 2,
+            "print_stats":False,
         },
     ),
     Experiment(
         name="train",
         overrides={
             "dataset.downsample_factor": 1,
+            "print_stats":False,
         },
     ),
     Experiment(
         name="truck",
         overrides={
             "dataset.downsample_factor": 1,
+            "print_stats":False,
         },
     ),
 ]
